@@ -1,0 +1,48 @@
+<!-- -->
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo" style="margin:10px auto 0;"></div>
+    </div>
+
+    <!-- Login form -->
+    <form [formGroup]="onLoginForm" class="list-form">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="text" item-start class="text-white"></ion-icon>
+          Correo electrónico
+        </ion-label>
+        <ion-input type="text" formControlName="username" [(ngModel)]="user.username"></ion-input>
+      </ion-item>
+      <p ion-text color="danger" class="text-1x has-error"
+         *ngIf="onLoginForm.get('username').touched && onLoginForm.get('username').hasError('required')">Este campo es requerido.</p>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-white"></ion-icon>
+          Contraseña
+        </ion-label>
+        <ion-input type="password" formControlName="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      <p ion-text color="danger" class="text-1x has-error"
+         *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">Este campo es requerido.</p>
+     <div>
+       <button type="submit" ion-button icon-start block color="dark" tappable (click)="login(user)" [disabled]="!onLoginForm.valid">
+         <ion-icon name="log-in"></ion-icon>
+         Iniciar Sesión
+       </button>
+     </div>
+    </form>
+
+    <p text-center ion-text color="light" tappable (click)="forgotPass()"><strong>¿Olvidaste tu contraseña?</strong></p>
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="light" tappable (click)="register()"><strong>¿No tienes cuenta?</strong></span>
+    </div>
+    <div text-center margin-top class="login-footer">
+      <img src="assets/img/fedesoft_logo.png" width="100px">
+    </div>
+  </div>
+</ion-content>
