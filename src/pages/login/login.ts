@@ -1,3 +1,4 @@
+import { AuthProvider } from './../../providers/auth/auth';
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertController, IonicPage, MenuController, NavController, ToastController} from "ionic-angular";
@@ -5,7 +6,7 @@ import {AlertController, IonicPage, MenuController, NavController, ToastControll
 import {User} from "../../shared/models/user";
 import {MyApp} from "../../app/app.component";
 import {Storage} from "@ionic/storage";
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+
 
 @IonicPage({
   name: 'page-login',
@@ -31,7 +32,7 @@ export class LoginPage implements OnInit {
     public menu: MenuController,
     public toastCtrl: ToastController,
     public storage: Storage,
-    public authService: AuthServiceProvider
+    public auth: AuthProvider, 
   )
   {
     this.menu.swipeEnable(false);
@@ -57,23 +58,13 @@ export class LoginPage implements OnInit {
 
   // login and go to home page
   login(user: User) {
-
-    debugger;
-    this.authService.login(user).then((result) => {
-      //this.loading.dismiss();
-      debugger;
-      this.data = result;
-      debugger;
-      this.nav.setRoot('page-programacion');
-      localStorage.setItem('token', this.data.access_token);
-      //this.navCtrl.setRoot(TabsPage);
-
-    }, (err) => {
-      debugger;
-      //this.loading.dismiss();
-      //this.presentToast(err);
-    });
-
+    this.auth.login(user).subscribe( a => {
+        if (a){
+          this.nav.setRoot('page-programacion');
+        }else{
+          alert("algo paso");
+        }
+     });
   }
 
   forgotPass() {
