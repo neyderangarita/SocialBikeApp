@@ -10,6 +10,7 @@ import {Keyboard} from '@ionic-native/keyboard';
 import {ToolsService} from "../providers/tools";
 import {MyApp} from "./app.component";
 import { AuthProvider } from '../providers/auth/auth';
+import { Api2Provider } from '../providers/api2/api2';
 
 
 @NgModule({
@@ -38,15 +39,16 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp
   ],
   
-  providers: [
+  providers: [  
     StatusBar,
     SplashScreen,
     Keyboard,
     ToolsService,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthServiceProvider,
     AuthProvider,
+    Api2Provider
   ]
+  
 })
 
 export class AppModule {}

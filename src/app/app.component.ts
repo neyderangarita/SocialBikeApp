@@ -39,14 +39,15 @@ export class MyApp {
       //Todos los eventos creados
       {title: 'Eventos', component: 'page-programacion', icon: 'calendar'},
       //Eventos creados por mi
-      {title: 'Eventos Programados por mi', component: 'page-evento-programado', icon: 'grid'},
+      {title: 'Mis eventos', component: 'page-evento-programado', icon: 'grid'},
       //Eventos a los que asistiré
-      {title: 'Eventos Asistiré', component: 'page-evento-paralelo', icon: 'grid'}
+      {title: 'Eventos Asistiré', component: 'page-evento-paralelo', icon: 'grid'},
 
-      //{title: 'Mi Itinerario', component: 'page-mi-itinerario', icon: 'heart'},
-      //{title: 'Reservar Salas', component: 'page-reservar-sala', icon: 'clock'},
-      //{title: 'Mis Reservas', component: 'page-consultar-reserva-salas', icon: 'list-box'},
-      //{title: 'Información General', component: 'page-informacion-general', icon: 'information-circle'},
+      {title: 'Alarmas de Robos', component: 'page-evento-paralelo', icon: 'alarm'},
+
+      {title: 'Témas de interes', component: 'page-evento-paralelo', icon: 'grid'},
+
+      {title: 'Tips Bici', component: 'page-evento-paralelo', icon: 'star'},
     ];
 
   }
@@ -65,12 +66,10 @@ export class MyApp {
 
   openPage(page) {
     this.nav.setRoot(page.component);
-    
   }
 
   logout() {
     this.nav.setRoot('page-login');
-
   }
 
   public static getUser() {
