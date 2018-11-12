@@ -13,32 +13,37 @@
     <img src='{{url_banner}}'>
   </div>
 
-  <div class="booking-card events-background">
-    <ion-grid fixed>
-      <ion-row>
-        <ion-col col-12>
-          <ion-card no-margin margin-bottom class="full-width">
-
-            <ion-item>
-              <ion-label ion-text color="primary">Dia:</ion-label>
-            </ion-item>
-          </ion-card>
-
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-
   <ion-grid fixed>
     <ion-row>
       <ion-col col-12 margin-bottom>
-        <ion-card *ngIf="!programacion" class="primary-bg" margin-top>
+        <ion-card *ngIf="!events" class="primary-bg" margin-top>
           <ion-card-content>
-            <p text-center class="text-white">Cargando programación...</p>
+            <p text-center class="text-white">Cargando eventos...</p>
           </ion-card-content>
         </ion-card>
+
+        <ion-list>
+            <ion-item-sliding *ngFor="let elemento of events">
+              <button ion-item>
+                    <h2>{{elemento.nombre}}</h2>
+                    <p>Ruta: {{elemento.sitio_encuentro}}</p>
+                    <p>Fecha: {{elemento.fecha}}</p>
+              </button>
+              <ion-item-options side="right">
+                <button ion-button icon-only clear large item-end>
+                  <ion-icon name="more"></ion-icon>
+                </button>
+                <button ion-button icon-only clear large item-end color="danger">
+                  <ion-icon name="heart"></ion-icon>
+                </button>
+                <button ion-button icon-only clear large item-end>
+                  <ion-icon name="share"></ion-icon>
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+
       </ion-col>
     </ion-row>
   </ion-grid>
-  
 </ion-content>

@@ -7,7 +7,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
 const api = 'https://socialbike.herokuapp.com/';
 
 @Injectable()
@@ -15,7 +14,6 @@ export class AuthProvider {
   
   token;
   Api2Provider: any;
-
   constructor(public http: HttpClient, public api: Api2Provider) {
     console.log('Hello AuthProvider Provider');
   }
