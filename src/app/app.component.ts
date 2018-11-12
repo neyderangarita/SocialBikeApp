@@ -1,11 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {Keyboard} from '@ionic-native/keyboard';
 import {Storage} from "@ionic/storage";
-
 
 export interface MenuItem {
   title: string;
@@ -39,9 +37,9 @@ export class MyApp {
       //Todos los eventos creados
       {title: 'Eventos', component: 'page-programacion', icon: 'calendar'},
       //Eventos creados por mi
-      {title: 'Mis eventos', component: 'page-evento-programado', icon: 'grid'},
+      {title: 'Mis eventos', component: 'page-mis-eventos', icon: 'calendar'},
       //Eventos a los que asistiré
-      {title: 'Eventos Asistiré', component: 'page-evento-paralelo', icon: 'grid'},
+      {title: 'Eventos Asistiré', component: 'page-evento-paralelo', icon: 'calendar'},
 
       {title: 'Alarmas de Robos', component: 'page-evento-paralelo', icon: 'alarm'},
 

@@ -12,6 +12,7 @@ import {IonicPage, NavController, MenuController} from "ionic-angular";
   selector: 'page-register',
   templateUrl: 'register.html'
 })
+
 export class RegisterPage implements OnInit {
 
   public onRegisterForm: FormGroup;
