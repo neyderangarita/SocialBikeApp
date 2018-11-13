@@ -47,6 +47,10 @@ export class RegisterPage implements OnInit {
 
   // register and go to home page
   register(email: string) {
+
+    
+
+    this.nav.setRoot('page-programacion');
   }
 
 // go to login page

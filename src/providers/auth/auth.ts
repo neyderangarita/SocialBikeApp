@@ -13,6 +13,7 @@ const api = 'https://socialbike.herokuapp.com/';
 export class AuthProvider {
   
   token;
+  userId;
   Api2Provider: any;
   constructor(public http: HttpClient, public api: Api2Provider) {
     console.log('Hello AuthProvider Provider');
@@ -20,9 +21,14 @@ export class AuthProvider {
 
   login(user: User){
     return this.http.post<any>(api + "auth/login", user, httpOptions).pipe(
-      tap((token: any) => {
-        this.token = token.auth_token;
+      tap((retorno: any) => {
+        this.token = retorno.auth_token;
+
+        debugger;
+
+        this.userId = retorno.user[0].id;
         localStorage.setItem('token', this.token);
+        localStorage.setItem('userId', this.userId);
       }));
     }
 }
