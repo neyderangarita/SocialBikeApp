@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {ToastController} from "ionic-angular";
-import {SocialSharing} from "@ionic-native/social-sharing";
+//import {SocialSharing} from "@ionic-native/social-sharing";
 
 @Injectable()
 export class ToolsService {
 
-  constructor(public toastCtrl: ToastController, private socialSharing: SocialSharing) {
+  constructor(public toastCtrl: ToastController) {
   }
 
   encodeUserEmail(email: string) {
@@ -36,11 +36,13 @@ export class ToolsService {
   }
 
   share(msg){
+    /*
     this.socialSharing.share(msg, null, null, null).then(() =>{
       console.log("todo ok");
     }).catch(error => {
       console.log(error.message);
     });
+    */
   }
   
 }

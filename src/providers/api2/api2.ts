@@ -2,6 +2,7 @@ import { AuthProvider } from './../auth/auth';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, DebugElement } from '@angular/core';
 
+
 const api = 'https://socialbike.herokuapp.com/';
 
 @Injectable()
@@ -10,7 +11,6 @@ export class Api2Provider {
   httpOptions;
 
   constructor(public http: HttpClient) {
-    console.log('Hello ApiProvider Provider');
     this.token = localStorage.getItem('token');
     this.httpOptions = {
       headers: new HttpHeaders(
@@ -21,10 +21,8 @@ export class Api2Provider {
     };
   }
 
-  callPetition(recurso: string, requestMethod: string){
-
+  callPetition(recurso: string, requestMethod: string, parameter?: any){
     if (requestMethod === 'GET'){
-
       return new Promise(resolve => {
         this.http.get(api + recurso, this.httpOptions).subscribe(data => {
           resolve(data);
@@ -32,22 +30,26 @@ export class Api2Provider {
           console.log(err);
         });
       });
-
+    }
+    else if (requestMethod === 'POST'){
+      let parametros = {}
+      return new Promise(resolve => {
+        this.http.post(api + recurso, parametros, this.httpOptions).subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+      });
     }
     else{
-
-      /*
-      return this.http.post<any>(api + "auth/login", user, httpOptions).pipe(
-        tap((token: any) => {
-          this.token = token.auth_token;
-          localStorage.setItem('token', this.token);
-        }));
-      }
-      */
-
+      return new Promise(resolve => {
+        this.http.delete(api + recurso, this.httpOptions).subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+      });
     }
-
-
   }
 
   setToken(token: string){

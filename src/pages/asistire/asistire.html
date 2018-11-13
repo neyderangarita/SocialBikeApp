@@ -5,41 +5,30 @@
     </button>
     <ion-title>{{nombre_evento}}</ion-title>
   </ion-navbar>
-
-
 </ion-header>
 
 <ion-content class="common-bg">
-  
   <div class="support-header">
     <img src='{{url_banner}}'>
   </div>
-
-  <div margin-top>
-      <ion-col><button ion-button>Regristrar evento</button></ion-col>
-  </div>
-
   <ion-grid fixed>
     <ion-row>
       <ion-col col-12 margin-bottom>
-        <ion-card *ngIf="!events" class="primary-bg" margin-top>
+        <ion-card *ngIf="!eventsAssist" class="primary-bg" margin-top>
           <ion-card-content>
             <p text-center class="text-white">Cargando eventos...</p>
           </ion-card-content>
         </ion-card>
         <ion-list>
-            <ion-item-sliding *ngFor="let elemento of events">
+            <ion-item-sliding *ngFor="let elemento of eventsAssist">
               <button ion-item>
                     <h2>{{elemento.nombre}}</h2>
                     <p>Ruta: {{elemento.sitio_encuentro}}</p>
                     <p>Fecha: {{elemento.fecha}}</p>
               </button>
               <ion-item-options side="right">
-                <button ion-button icon-only clear large item-end>
-                  <ion-icon name="eye"></ion-icon>
-                </button>
-                <button ion-button icon-only clear large item-end color="third" (click)="confirmAssistance(elemento)">
-                  <ion-icon name="star"></ion-icon>
+                <button ion-button icon-only clear large item-end color="danger" (click)="cancelAssist(elemento)">
+                  <ion-icon name="trash"></ion-icon>
                 </button>
                 <button ion-button icon-only clear large item-end color="secondary">
                   <ion-icon name="share"></ion-icon>
@@ -47,7 +36,6 @@
               </ion-item-options>
             </ion-item-sliding>
         </ion-list>
-
       </ion-col>
     </ion-row>
   </ion-grid>

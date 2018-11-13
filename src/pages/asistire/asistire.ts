@@ -1,25 +1,23 @@
-import { Event } from './../../shared/models/event';
 import { Api2Provider } from './../../providers/api2/api2';
 import { AuthProvider } from './../../providers/auth/auth';
 import {Component, OnDestroy} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {Subject} from "rxjs/Subject";
-//import {SocialSharing} from "@ionic-native/social-sharing";
 
 @IonicPage({
-  name: 'page-programacion',
-  segment: 'programacion'
+  name: 'page-asistire',
+  segment: 'asistire'
 })
 
 @Component({
-  selector: 'page-programacion',
-  templateUrl: 'programacion.html',
+  selector: 'page-asistire',
+  templateUrl: 'asistire.html',
 })
 
-export class ProgramacionPage implements OnDestroy {
+export class AsistirePage {
 
-  events: any;
+  eventsAssist: any;
   path: string;
   url_banner: string;
   nombre_evento: string;
@@ -35,12 +33,12 @@ export class ProgramacionPage implements OnDestroy {
     ) {
     this.menu.swipeEnable(true);
     this.menu.enable(true);
-    this.nombre_evento = 'Eventos'
+    this.nombre_evento = 'Eventos a los que Asistiré'
     this.url_banner
   }
 
   ionViewDidLoad() {
-    this.getEvents();
+    this.getEventsAssist();
   }
 
   ngOnDestroy() {
@@ -48,19 +46,21 @@ export class ProgramacionPage implements OnDestroy {
     this.unsubscribe.complete();
   }
 
-  getEvents(){
-    this.api.callPetition('events', 'GET')
+  getEventsAssist(){
+
+    let userId = localStorage.getItem('userId');
+    this.api.callPetition('events/assists/' + userId, 'GET')
     .then(data => {
-      this.events = data;
+      this.eventsAssist = data;
     });
+    
   }
 
-  confirmAssistance(elemento) {
-    let userId = localStorage.getItem('userId');
-    this.api.callPetition('events/'+ elemento.id + '/assists/' + userId, 'POST')
+  cancelAssist(elemento) {
+    this.api.callPetition('events/'+ elemento.id + '/assists/' + elemento.user_id, 'DELETE')
     .then(data => {
       // Validar si ya se ha registro asistire a ese evento
-      this.tools.notify("Se ha agregado el evento "+elemento.nombre+" a la lista Eventos Asistiré.");
+      this.tools.notify("Se ha cancelado el registro al evento correctamente");
       this.navCtrl.setRoot(this.navCtrl.getActive().component);
     });
   }
