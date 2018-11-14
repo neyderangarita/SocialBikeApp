@@ -22,7 +22,6 @@ export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
   user = {} as User;
   data: any;
-  //currentUser;
 
   constructor(
     private _fb: FormBuilder,
@@ -48,8 +47,6 @@ export class LoginPage implements OnInit {
         Validators.required
       ])]
     });
-
-
   }
 
   // go to register page
@@ -59,9 +56,9 @@ export class LoginPage implements OnInit {
 
   // login and go to home page
   login(user: User) {
-    
-    this.auth.login(user).subscribe( a => {
-        if (a){
+    this.auth.login(user).subscribe( retorno => {
+        if (retorno){
+          localStorage.setItem('usuario', retorno.user[0].username);
           this.nav.setRoot('page-programacion');
         }else{
           alert("algo paso");

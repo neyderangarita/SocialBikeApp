@@ -74,8 +74,6 @@ export class RegisterEventPage {
       this.nav.setRoot('page-programacion');
       this.tools.notify("Se ha registrado el evento: " + parameter.nombre + " correctamente.");
     });
-
-    //this.nav.setRoot('page-programacion');
   }
 
 

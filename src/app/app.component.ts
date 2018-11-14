@@ -9,6 +9,7 @@ export interface MenuItem {
   title: string;
   component: any;
   icon: string;
+  //nombre_usuario: string;
 }
 
 @Component({
@@ -22,6 +23,7 @@ export class MyApp {
   showMenu: boolean = true;
   appMenuItems: Array<MenuItem>;
   public static usuario;
+  nombre_usuario: string = "";
 
   constructor(
     public platform: Platform,
@@ -46,8 +48,10 @@ export class MyApp {
       //{title: 'Témas de interes', component: 'page-evento-paralelo', icon: 'bicycle'},
 
       {title: 'Tips Bici', component: 'page-tips', icon: 'bicycle'},
+ 
     ];
 
+    this.nombre_usuario = localStorage.getItem('usuario');
   }
 
   initializeApp() {
@@ -68,6 +72,7 @@ export class MyApp {
 
   logout() {
     this.nav.setRoot('page-login');
+    localStorage.clear();
   }
 
   public static getUser() {
