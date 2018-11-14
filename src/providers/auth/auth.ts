@@ -23,9 +23,6 @@ export class AuthProvider {
     return this.http.post<any>(api + "auth/login", user, httpOptions).pipe(
       tap((retorno: any) => {
         this.token = retorno.auth_token;
-
-        debugger;
-
         this.userId = retorno.user[0].id;
         localStorage.setItem('token', this.token);
         localStorage.setItem('userId', this.userId);

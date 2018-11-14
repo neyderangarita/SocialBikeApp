@@ -1,3 +1,4 @@
+import { YoutubePipe } from './../pipes/youtube/youtube';
 import {ErrorHandler, NgModule} from "@angular/core";
 import {IonicApp, IonicErrorHandler, IonicModule} from "ionic-angular";
 import {BrowserModule} from '@angular/platform-browser';
@@ -11,7 +12,6 @@ import {ToolsService} from "../providers/tools";
 import {MyApp} from "./app.component";
 import { AuthProvider } from '../providers/auth/auth';
 import { Api2Provider } from '../providers/api2/api2';
-
 
 @NgModule({
   declarations: [

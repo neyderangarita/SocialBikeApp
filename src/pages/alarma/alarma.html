@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{nombre_evento}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class="common-bg">
+    <div class="support-header">
+      <img src='{{url_banner}}'>
+    </div>
+    <ion-grid fixed>
+        <ion-row>
+          <ion-col col-12 margin-bottom>
+            <ion-card>
+              <ion-card-content>
+                <ion-list>
+                  <ion-item>
+                    <ion-thumbnail item-start>
+                      <img src="assets/img/policia.png">
+                    </ion-thumbnail>
+                    <h2>
+                      <strong>Policía Nacional de Colombia</strong>
+                    </h2>
+                    <p><a href="#" title="Ver" (click)="openURL('https://adenunciar.policia.gov.co/adenunciar/Login.aspx?ReturnUrl=%2fadenunciar%2ffrm_denuncia_hp.aspx')">Denuncias online</a>
+                    </p>
+                    <p><a href="tel:+5159581">LLamar a este número: 515 95 81</a></p>
+                    
+                    <p><a href="tel:+123">LLamar a este número: 123</a></p>
+                    
+                    <p><a href="tel:+#767">Desde cualquier celular marcar #767</a></p>
+
+                    <p><a href="mailto:lineadirecta@policia.gov.co">lineadirecta@policia.gov.co</a></p>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-content>
+  

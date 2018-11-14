@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{titulo}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="auth-page vertical-align-content">
+  <div class="login-content">    
+    <!-- Register form -->
+    <form [formGroup]="onRegisterForm" class="list-form">
+
+      <ion-item>
+            <ion-label floating>
+              <ion-icon name="text" item-start class="text-white"></ion-icon>
+              Descripción del evento
+            </ion-label>
+            <ion-input type="text" formControlName="name" [(ngModel)]="event.nombre"></ion-input>
+      </ion-item>
+      <p ion-text color="danger" class="text-1x has-error" 
+            *ngIf="onRegisterForm.get('name').touched && onRegisterForm.get('name').hasError('required')">Este campo es requerido</p>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="bicycle" item-start class="text-white"></ion-icon>
+            Sitio de encuentro
+        </ion-label>
+        <ion-input type="text" formControlName="sitio_encuentro" [(ngModel)]="event.sitio_encuentro"></ion-input>
+        </ion-item>
+        <p ion-text color="danger" class="text-1x has-error" 
+                *ngIf="onRegisterForm.get('sitio_encuentro').touched && onRegisterForm.get('sitio_encuentro').hasError('required')">Este campo es requerido</p>
+
+      <ion-item>
+          <ion-label floating>
+              <ion-icon name="calendar" item-start class="text-white"></ion-icon>
+                  Fecha evento
+          </ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY HH:mm" min="2018" formControlName="dateEvent" [(ngModel)]="event.fecha"></ion-datetime>
+      </ion-item>
+
+    </form>
+    <div margin-top>
+      <button ion-button block color="dark" tappable (click)="register(event)" [disabled]="!onRegisterForm.valid">
+        Registrar
+      </button>
+      <button ion-button block color="dark" tappable (click)="programacion()">
+        Volver
+      </button>
+    </div>
+  </div>
+</ion-content>

@@ -22,7 +22,6 @@ export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
   user = {} as User;
   data: any;
-
   //currentUser;
 
   constructor(
@@ -49,6 +48,8 @@ export class LoginPage implements OnInit {
         Validators.required
       ])]
     });
+
+
   }
 
   // go to register page
@@ -58,6 +59,7 @@ export class LoginPage implements OnInit {
 
   // login and go to home page
   login(user: User) {
+    
     this.auth.login(user).subscribe( a => {
         if (a){
           this.nav.setRoot('page-programacion');
@@ -104,6 +106,7 @@ export class LoginPage implements OnInit {
         }
       ]
     });
+    
     forgot.present();
   }
 

@@ -1,3 +1,4 @@
+import { DetailEventPage } from './../detail-event/detail-event';
 import { Event } from './../../shared/models/event';
 import { Api2Provider } from './../../providers/api2/api2';
 import { AuthProvider } from './../../providers/auth/auth';
@@ -15,7 +16,6 @@ import {Subject} from "rxjs/Subject";
   selector: 'page-mis-eventos',
   templateUrl: 'mis-eventos.html',
 })
-
 
 export class MisEventosPage {
 
@@ -35,8 +35,8 @@ export class MisEventosPage {
     ) {
       this.menu.swipeEnable(true);
       this.menu.enable(true);
-      this.nombre_evento = 'Mis eventos'
-      this.url_banner
+      this.nombre_evento = 'Mis eventos creados'
+      this.url_banner = 'assets/img/portada.jpg';
   }
 
   ionViewDidLoad() {
@@ -63,6 +63,15 @@ export class MisEventosPage {
       // Validar si ya se ha registro asistire a ese evento
       this.tools.notify("Se ha agregado el evento "+elemento.nombre+" a la lista Eventos Asistiré.");
       this.navCtrl.setRoot(this.navCtrl.getActive().component);
+    });
+  }
+
+  detailEvent(elemento) {
+    this.navCtrl.push(DetailEventPage, {
+      nombre: elemento.nombre,
+      sitio_encuentro: elemento.sitio_encuentro,
+      fecha: elemento.fecha,
+      idEvento: elemento.id
     });
   }
 

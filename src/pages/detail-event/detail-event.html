@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{nombre_evento}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class="common-bg">
+    <ion-card>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/logo.png">
+          </ion-avatar>
+          <h2>{{nombre}}</h2>
+          <p>Sitio encuentro: {{sitio_encuentro}}</p>
+          <p>{{fecha}}</p>
+        </ion-item>
+        <img src="{{url_banner}}">
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <ion-icon name="text"></ion-icon>
+              <div>{{ comments?.length }} Comentarios</div>
+            </button>
+          </ion-col>
+        </ion-row>
+
+        <div class="comment-box">
+            <ion-card *ngFor="let comment of comments">
+              <ion-card-content>
+                    <strong>{{comment.comment}}</strong>
+              </ion-card-content>
+            </ion-card>
+        </div>
+      </ion-card>
+
+
+      <!-- <ion-footer padding>
+          <ion-textarea [(ngModel)]="message" type="text" placeholder="Comentarios .... "></ion-textarea>
+          <button ion-button small float-right round (click)="sendComment()">Send</button>
+      </ion-footer> -->
+
+      <ion-fab right top>
+          <button ion-fab color="primary" (click)="sendComment()"><ion-icon name="text"></ion-icon></button>
+      </ion-fab>
+
+  </ion-content>
+  
