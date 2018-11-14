@@ -27,5 +27,5 @@ export class AuthProvider {
         localStorage.setItem('token', this.token);
         localStorage.setItem('userId', this.userId);
       }));
-    }
+  }
 }

@@ -23,6 +23,7 @@ export class ProgramacionPage implements OnDestroy {
   path: string;
   url_banner: string;
   nombre_evento: string;
+  nombre_usuario: string;
   private unsubscribe = new Subject<void>();
 
   constructor(
@@ -37,6 +38,7 @@ export class ProgramacionPage implements OnDestroy {
     this.menu.enable(true);
     this.nombre_evento = 'Eventos'
     this.url_banner = 'assets/img/portada.jpg';
+    this.nombre_usuario = localStorage.getItem('usuario');
   }
 
   ionViewDidLoad() {
