@@ -37,15 +37,15 @@ export class MyApp {
       //Todos los eventos creados
       {title: 'Eventos', component: 'page-programacion', icon: 'calendar'},
       //Eventos creados por mi
-      {title: 'Mis eventos', component: 'page-mis-eventos', icon: 'calendar'},
+      {title: 'Mis eventos', component: 'page-mis-eventos', icon: 'clipboard'},
       //Eventos a los que asistiré
-      {title: 'Eventos Asistiré', component: 'page-asistire', icon: 'calendar'},
+      {title: 'Eventos Asistiré', component: 'page-asistire', icon: 'bookmark'},
 
-      {title: 'Alarmas de Robos', component: 'page-evento-paralelo', icon: 'alarm'},
+      {title: 'Alarmas de Robos', component: 'page-alarma', icon: 'notifications'},
 
-      {title: 'Témas de interes', component: 'page-evento-paralelo', icon: 'grid'},
+      //{title: 'Témas de interes', component: 'page-evento-paralelo', icon: 'bicycle'},
 
-      {title: 'Tips Bici', component: 'page-evento-paralelo', icon: 'star'},
+      {title: 'Tips Bici', component: 'page-tips', icon: 'bicycle'},
     ];
 
   }

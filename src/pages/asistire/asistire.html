@@ -22,8 +22,11 @@
         <ion-list>
             <ion-item-sliding *ngFor="let elemento of eventsAssist">
               <button ion-item>
+                    <ion-thumbnail item-start>
+                        <img src="assets/img/logo.png">
+                    </ion-thumbnail>
                     <h2>{{elemento.nombre}}</h2>
-                    <p>Ruta: {{elemento.sitio_encuentro}}</p>
+                    <p>Sitio encuentro: {{elemento.sitio_encuentro}}</p>
                     <p>Fecha: {{elemento.fecha}}</p>
               </button>
               <ion-item-options side="right">

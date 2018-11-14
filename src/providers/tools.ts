@@ -5,7 +5,10 @@ import {ToastController} from "ionic-angular";
 @Injectable()
 export class ToolsService {
 
-  constructor(public toastCtrl: ToastController) {
+  constructor(
+    public toastCtrl: ToastController,
+    //private socialSharing: SocialSharing
+    ) {
   }
 
   encodeUserEmail(email: string) {

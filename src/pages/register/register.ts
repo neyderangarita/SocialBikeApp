@@ -23,9 +23,7 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnInit() {
-
     this.onRegisterForm = this._fb.group({
-
       username: ['', Validators.compose([
         Validators.required
       ])],
@@ -41,22 +39,17 @@ export class RegisterPage implements OnInit {
       fechaNacimiento: ['', Validators.compose([
         Validators.required
       ])]
-      
     });
   }
 
   // register and go to home page
   register(email: string) {
-
-    
-
     this.nav.setRoot('page-programacion');
   }
 
-// go to login page
+  // go to login page
   login() {
     this.nav.setRoot('page-login');
   }
-
 
 }

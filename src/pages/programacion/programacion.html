@@ -5,19 +5,16 @@
     </button>
     <ion-title>{{nombre_evento}}</ion-title>
   </ion-navbar>
-
-
 </ion-header>
 
 <ion-content class="common-bg">
-  
+
   <div class="support-header">
     <img src='{{url_banner}}'>
   </div>
-
-  <div margin-top>
-      <ion-col><button ion-button>Regristrar evento</button></ion-col>
-  </div>
+  <ion-fab right top>
+      <button ion-fab color="primary" (click)="registerEvent()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 
   <ion-grid fixed>
     <ion-row>
@@ -30,21 +27,26 @@
         <ion-list>
             <ion-item-sliding *ngFor="let elemento of events">
               <button ion-item>
-                    <h2>{{elemento.nombre}}</h2>
-                    <p>Ruta: {{elemento.sitio_encuentro}}</p>
-                    <p>Fecha: {{elemento.fecha}}</p>
+                  <ion-thumbnail item-start>
+                      <img src="assets/img/logo.png">
+                  </ion-thumbnail>
+                  <h2>{{elemento.nombre}}</h2>
+                  <p>Sitio encuentro: {{elemento.sitio_encuentro}}</p>
+                  <p>Fecha: {{elemento.fecha}}</p>
               </button>
+
               <ion-item-options side="right">
-                <button ion-button icon-only clear large item-end>
+                <button ion-button icon-only clear large item-end (click)="detailEvent(elemento)">
                   <ion-icon name="eye"></ion-icon>
                 </button>
                 <button ion-button icon-only clear large item-end color="third" (click)="confirmAssistance(elemento)">
                   <ion-icon name="star"></ion-icon>
                 </button>
-                <button ion-button icon-only clear large item-end color="secondary">
+                <button ion-button icon-only clear large item-end color="secondary" (click)="shareElement(elemento)">
                   <ion-icon name="share"></ion-icon>
                 </button>
               </ion-item-options>
+
             </ion-item-sliding>
         </ion-list>
 

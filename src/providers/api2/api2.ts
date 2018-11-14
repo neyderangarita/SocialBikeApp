@@ -21,7 +21,8 @@ export class Api2Provider {
     };
   }
 
-  callPetition(recurso: string, requestMethod: string, parameter?: any){
+  callPetition(recurso: string, requestMethod: string, parameter?: {}){
+    
     if (requestMethod === 'GET'){
       return new Promise(resolve => {
         this.http.get(api + recurso, this.httpOptions).subscribe(data => {
@@ -32,9 +33,8 @@ export class Api2Provider {
       });
     }
     else if (requestMethod === 'POST'){
-      let parametros = {}
       return new Promise(resolve => {
-        this.http.post(api + recurso, parametros, this.httpOptions).subscribe(data => {
+        this.http.post(api + recurso, parameter, this.httpOptions).subscribe(data => {
           resolve(data);
         }, err => {
           console.log(err);

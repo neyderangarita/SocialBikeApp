@@ -34,7 +34,7 @@ export class AsistirePage {
     this.menu.swipeEnable(true);
     this.menu.enable(true);
     this.nombre_evento = 'Eventos a los que Asistiré'
-    this.url_banner
+    this.url_banner = 'assets/img/portada.jpg';
   }
 
   ionViewDidLoad() {
