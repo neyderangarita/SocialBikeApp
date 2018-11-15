@@ -1,7 +1,7 @@
 import { Event } from './../../shared/models/event';
 import { Api2Provider } from './../../providers/api2/api2';
 import { AuthProvider } from './../../providers/auth/auth';
-import {Component, OnDestroy} from '@angular/core';
+import {Component} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
@@ -18,7 +18,6 @@ import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 
 export class RegisterEventPage {
 
-  //private unsubscribe = new Subject<void>();
   public onRegisterForm: FormGroup;
   public titulo: String;
   event = {} as Event;

@@ -1,6 +1,5 @@
-import { AuthProvider } from './../auth/auth';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, DebugElement } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 
 const api = 'https://socialbike.herokuapp.com/';

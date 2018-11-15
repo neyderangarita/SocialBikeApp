@@ -1,11 +1,11 @@
 import { DetailEventPage } from './../detail-event/detail-event';
-import { Event } from './../../shared/models/event';
 import { Api2Provider } from './../../providers/api2/api2';
 import { AuthProvider } from './../../providers/auth/auth';
 import {Component, OnDestroy} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {Subject} from "rxjs/Subject";
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @IonicPage({
   name: 'page-programacion',
@@ -32,7 +32,8 @@ export class ProgramacionPage implements OnDestroy {
     public tools: ToolsService,
     public menu: MenuController,
     public auth: AuthProvider,
-    public api: Api2Provider
+    public api: Api2Provider,
+    private socialSharing: SocialSharing
     ) {
     this.menu.swipeEnable(true);
     this.menu.enable(true);
@@ -81,11 +82,12 @@ export class ProgramacionPage implements OnDestroy {
   }
 
   shareElement(element){
-    
-    let message="Me encanta el evento ";
-    console.log(message);
-    this.tools.share(message);
+    this.socialSharing.shareViaTwitter(element.nombre, null, null)
+              .then(() => {
+                console.log("todo ok");
+              })
+              .catch((error) => {
+    });
   }
-
 
 }

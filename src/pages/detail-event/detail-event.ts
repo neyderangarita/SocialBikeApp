@@ -1,8 +1,7 @@
 import { ProgramacionPage } from './../programacion/programacion';
-import { Event } from './../../shared/models/event';
 import { Api2Provider } from './../../providers/api2/api2';
 import { AuthProvider } from './../../providers/auth/auth';
-import {Component, OnDestroy} from '@angular/core';
+import {Component} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams, ToastController, AlertController} from 'ionic-angular';
 import {Subject} from "rxjs/Subject";

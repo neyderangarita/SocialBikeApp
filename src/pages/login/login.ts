@@ -70,7 +70,7 @@ export class LoginPage implements OnInit {
 
     let forgot = this.forgotCtrl.create({
       title: '¿Olvidaste tu contraseña?',
-      message: "Ingresa tu email registrado, para enviart un correo de recuperación.",
+      message: "Ingresa tu email registrado, para enviarte un correo de recuperación.",
       inputs: [
         {
           name: 'email',
@@ -98,7 +98,6 @@ export class LoginPage implements OnInit {
               showCloseButton: true
             });
             toast.present();
-            
           }
         }
       ]

@@ -1,8 +1,7 @@
 import { DetailEventPage } from './../detail-event/detail-event';
-import { Event } from './../../shared/models/event';
 import { Api2Provider } from './../../providers/api2/api2';
 import { AuthProvider } from './../../providers/auth/auth';
-import {Component, OnDestroy} from '@angular/core';
+import {Component} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {Subject} from "rxjs/Subject";
@@ -37,7 +36,6 @@ export class AlarmaPage {
       this.menu.swipeEnable(true);
       this.menu.enable(true);
       this.nombre_evento = 'Alarma de robos'
-      //this.url_banner = 'assets/img/portada.jpg';
   }
 
   ionViewDidLoad() {
