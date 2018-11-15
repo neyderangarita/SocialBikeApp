@@ -21,6 +21,7 @@ export class Api2Provider {
   }
 
   callPetition(recurso: string, requestMethod: string, parameter?: {}){
+    
     if (requestMethod === 'GET'){
       return new Promise(resolve => {
         this.http.get(api + recurso, this.httpOptions).subscribe(data => {

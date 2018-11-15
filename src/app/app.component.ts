@@ -45,7 +45,7 @@ export class MyApp {
 
       {title: 'Alarmas de Robos', component: 'page-alarma', icon: 'notifications'},
 
-      //{title: 'Témas de interes', component: 'page-evento-paralelo', icon: 'bicycle'},
+      {title: 'Museos bogotá', component: 'page-museos', icon: 'camera'},
 
       {title: 'Tips Bici', component: 'page-tips', icon: 'bicycle'},
  

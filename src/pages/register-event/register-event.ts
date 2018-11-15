@@ -5,6 +5,8 @@ import {Component} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @IonicPage({
   name: 'page-register-event',
@@ -30,6 +32,7 @@ export class RegisterEventPage {
     public menu: MenuController,
     public auth: AuthProvider,
     public api: Api2Provider,
+    public http: HttpClient,
     ) {
       this.menu.swipeEnable(true);
       this.menu.enable(true);
@@ -74,6 +77,5 @@ export class RegisterEventPage {
       this.tools.notify("Se ha registrado el evento: " + parameter.nombre + " correctamente.");
     });
   }
-
 
 }

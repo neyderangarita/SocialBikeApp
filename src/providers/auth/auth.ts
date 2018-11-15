@@ -22,10 +22,12 @@ export class AuthProvider {
   login(user: User){
     return this.http.post<any>(api + "auth/login", user, httpOptions).pipe(
       tap((retorno: any) => {
+
         this.token = retorno.auth_token;
         this.userId = retorno.user[0].id;
         localStorage.setItem('token', this.token);
         localStorage.setItem('userId', this.userId);
+        
       }));
   }
 }

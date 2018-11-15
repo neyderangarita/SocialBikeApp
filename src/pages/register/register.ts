@@ -16,6 +16,7 @@ import { Api2Provider } from './../../providers/api2/api2';
   templateUrl: 'register.html'
 })
 
+
 export class RegisterPage implements OnInit {
 
   public onRegisterForm: FormGroup;

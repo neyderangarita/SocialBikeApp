@@ -56,6 +56,8 @@ export class LoginPage implements OnInit {
 
   // login and go to home page
   login(user: User) {
+
+
     this.auth.login(user).subscribe( retorno => {
         if (retorno){
           localStorage.setItem('usuario', retorno.user[0].username);

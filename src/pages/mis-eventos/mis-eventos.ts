@@ -75,4 +75,13 @@ export class MisEventosPage {
     });
   }
 
+  deleteEvent(elemento){
+    
+    this.api.callPetition('events/'+ elemento.id, 'DELETE')
+    .then(data => {
+      this.navCtrl.setRoot(this.navCtrl.getActive().component);
+      this.tools.notify("Se ha borrado el evento correctamente");
+    });
+  }
+
 }
