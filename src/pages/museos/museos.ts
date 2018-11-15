@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import * as $ from "jquery";
 
 @IonicPage({
   name: 'page-museos',
