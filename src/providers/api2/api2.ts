@@ -11,6 +11,7 @@ export class Api2Provider {
 
   constructor(public http: HttpClient) {
     this.token = localStorage.getItem('token');
+    console.log("Este es el token: " + this.token);
     this.httpOptions = {
       headers: new HttpHeaders(
         { 
@@ -21,12 +22,15 @@ export class Api2Provider {
   }
 
   callPetition(recurso: string, requestMethod: string, parameter?: {}){
-    
+
+    //console.log("Hacer la peticion: " + this.httpOptions);
+
     if (requestMethod === 'GET'){
       return new Promise(resolve => {
         this.http.get(api + recurso, this.httpOptions).subscribe(data => {
           resolve(data);
         }, err => {
+          console.log("Falló");
           console.log(err);
         });
       });

@@ -39,11 +39,13 @@ export class ProgramacionPage implements OnDestroy {
     this.menu.enable(true);
     this.nombre_evento = 'Eventos'
     this.url_banner = 'assets/img/portada.jpg';
-    this.nombre_usuario = localStorage.getItem('usuario');
+    //this.nombre_usuario = localStorage.getItem('usuario');
+    console.log(this.navParams.get("userProfile"));
+    this.nombre_usuario = this.navParams.get("userProfile");
   }
 
   ionViewDidLoad() {
-    this.getEvents();
+    //this.getEvents();
   }
 
   ngOnDestroy() {
@@ -52,8 +54,7 @@ export class ProgramacionPage implements OnDestroy {
   }
 
   getEvents(){
-    this.api.callPetition('events', 'GET')
-    .then(data => {
+    this.api.callPetition('events', 'GET').then(data => {
       this.events = data;
     });
   }

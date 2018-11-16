@@ -1,3 +1,4 @@
+//import { MyApp } from './app.component';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -47,11 +48,12 @@ export class MyApp {
 
       {title: 'Museos bogotá', component: 'page-museos', icon: 'camera'},
 
-      {title: 'Tips Bici', component: 'page-tips', icon: 'bicycle'},
- 
+      //{title: 'Tips Bici', component: 'page-tips', icon: 'bicycle'},
+
     ];
 
     this.nombre_usuario = localStorage.getItem('usuario');
+    
   }
 
   initializeApp() {
@@ -76,6 +78,11 @@ export class MyApp {
   }
 
   public static getUser() {
+
+    //Volver a consultar el usuario
+    //Cargar los datos del usuario
+    MyApp.usuario = localStorage.getItem('usuario');
+    document.getElementById('nombres').innerHTML = MyApp.usuario;
   }
 
 }

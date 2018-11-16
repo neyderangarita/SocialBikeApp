@@ -48,6 +48,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     Api2Provider,
     SocialSharing,
   ]
+
+  
   
 })
 
