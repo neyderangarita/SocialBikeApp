@@ -1,8 +1,8 @@
 {
-  "name": "socialbike",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "SocialBike",
+  "version": "1.0.0",
+  "author": "Neyder Angarita Osorio",
+  "homepage": "https://twitter.com/neyder_angarita",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",
@@ -28,11 +28,10 @@
     "@ionic-native/status-bar": "~4.15.0",
     "@ionic-native/youtube-video-player": "^4.17.0",
     "@ionic/storage": "2.2.0",
-    "cordova-android": "7.1.2",
     "cordova-browser": "5.0.4",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-inappbrowser": "3.0.0",
-    "cordova-plugin-ionic-keyboard": "2.1.3",
+    "cordova-plugin-ionic-keyboard": "^2.1.3",
     "cordova-plugin-ionic-webview": "^2.2.3",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
@@ -51,7 +50,7 @@
     "@ionic/app-scripts": "3.2.0",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project",
+  "description": "App para conectar bici usuarios mediante eventos y temas de interes",
   "cordova": {
     "plugins": {
       "cordova-plugin-ionic-keyboard": {},
@@ -67,7 +66,6 @@
       }
     },
     "platforms": [
-      "android",
       "browser"
     ]
   }
