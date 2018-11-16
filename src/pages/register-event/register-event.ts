@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @IonicPage({

@@ -2,11 +2,10 @@ import { AuthProvider } from './../../providers/auth/auth';
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertController, IonicPage, MenuController, NavController, ToastController} from "ionic-angular";
-
 import {User} from "../../shared/models/user";
 import {MyApp} from "../../app/app.component";
 import {Storage} from "@ionic/storage";
-
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage({
   name: 'page-login',
@@ -22,6 +21,7 @@ export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
   user = {} as User;
   data: any;
+  loading: any;
 
   constructor(
     private _fb: FormBuilder,
@@ -31,11 +31,15 @@ export class LoginPage implements OnInit {
     public toastCtrl: ToastController,
     public storage: Storage,
     public auth: AuthProvider, 
+    private loadingCtrl: LoadingController
   )
   {
     this.menu.swipeEnable(false);
     this.menu.enable(false);
     MyApp.getUser();
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
   }
 
   ngOnInit() {
@@ -57,15 +61,19 @@ export class LoginPage implements OnInit {
   // login and go to home page
   login(user: User) {
 
-
+    
     this.auth.login(user).subscribe( retorno => {
-        if (retorno){
-          localStorage.setItem('usuario', retorno.user[0].username);
-          this.nav.setRoot('page-programacion');
-        }else{
-          alert("algo paso");
-        }
-     });
+       //this.loading.present();
+       console.log("logueando");
+       this.callfunc(retorno);
+    });
+  }
+
+  callfunc(retorno){
+    console.log("terminó");
+    localStorage.setItem('usuario', retorno.user[0].username);
+    this.nav.setRoot('page-programacion', {userProfile: retorno.user[0].username} );
+    //this.loading.dismiss();
   }
 
   forgotPass() {

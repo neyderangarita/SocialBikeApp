@@ -11,23 +11,21 @@ const api = 'https://socialbike.herokuapp.com/';
 
 @Injectable()
 export class AuthProvider {
-  
   token;
   userId;
   Api2Provider: any;
   constructor(public http: HttpClient, public api: Api2Provider) {
-    console.log('Hello AuthProvider Provider');
   }
 
   login(user: User){
+
     return this.http.post<any>(api + "auth/login", user, httpOptions).pipe(
       tap((retorno: any) => {
-
+        console.log("Este es el token logueo:" + retorno.auth_token); 
         this.token = retorno.auth_token;
         this.userId = retorno.user[0].id;
         localStorage.setItem('token', this.token);
         localStorage.setItem('userId', this.userId);
-        
       }));
   }
 }

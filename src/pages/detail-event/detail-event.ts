@@ -1,4 +1,4 @@
-import { ProgramacionPage } from './../programacion/programacion';
+//import { ProgramacionPage } from './../programacion/programacion';
 import { Api2Provider } from './../../providers/api2/api2';
 import { AuthProvider } from './../../providers/auth/auth';
 import {Component} from '@angular/core';
@@ -54,7 +54,6 @@ export class DetailEventPage {
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad DetailEventPage');
     this.getComments();
   }
 

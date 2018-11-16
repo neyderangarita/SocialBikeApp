@@ -1,6 +1,6 @@
 import { Api2Provider } from './../../providers/api2/api2';
 import { AuthProvider } from './../../providers/auth/auth';
-import {Component, OnDestroy} from '@angular/core';
+import {Component} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {Subject} from "rxjs/Subject";

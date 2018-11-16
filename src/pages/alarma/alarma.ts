@@ -1,4 +1,4 @@
-import { DetailEventPage } from './../detail-event/detail-event';
+//import { DetailEventPage } from './../detail-event/detail-event';
 import { Api2Provider } from './../../providers/api2/api2';
 import { AuthProvider } from './../../providers/auth/auth';
 import {Component} from '@angular/core';

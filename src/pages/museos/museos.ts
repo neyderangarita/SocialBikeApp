@@ -34,7 +34,6 @@ export class MuseosPage {
 
   ngOnInit() {  
     this.http.get('https://www.datos.gov.co/resource/mdh3-rurf.json?$limit=5000&$$app_token=ouTTrX3lpEoGoHMBdif2oGh64').subscribe(data => {
-      console.log(data);
       this.museos = data;
     });
   }
