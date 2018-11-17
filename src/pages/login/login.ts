@@ -69,6 +69,7 @@ export class LoginPage implements OnInit {
   goBack(){
     this.nav.setRoot('page-programacion', {userProfile: ""} );
     this.loading.dismiss();
+    document.getElementById('nombres').innerHTML = localStorage.getItem('usuario');
   }
 
   forgotPass() {

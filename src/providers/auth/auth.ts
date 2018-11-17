@@ -19,19 +19,16 @@ export class AuthProvider {
   }
 
   login(user: User) {
-    
     return new Promise((resolve) =>{
       this.http.post<any>(api + "auth/login", user, httpOptions).subscribe((retorno: any) => {
           this.token = retorno.auth_token;
           this.userId = retorno.user[0].id;
           localStorage.setItem('token', this.token);
           localStorage.setItem('userId', this.userId);
+          localStorage.setItem('usuario', retorno.user[0].username);
           resolve();
       });
     });
-
-
-
   }
 
 }
