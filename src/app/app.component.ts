@@ -78,11 +78,8 @@ export class MyApp {
   }
 
   public static getUser() {
-
-    //Volver a consultar el usuario
-    //Cargar los datos del usuario
     MyApp.usuario = localStorage.getItem('usuario');
-    document.getElementById('nombres').innerHTML = MyApp.usuario;
+    document.getElementById('nombres').innerHTML = localStorage.getItem('usuario');
   }
 
 }

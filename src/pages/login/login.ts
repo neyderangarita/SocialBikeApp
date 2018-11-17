@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
     this.menu.enable(false);
     MyApp.getUser();
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Cargando...'
     });
   }
 
@@ -60,20 +60,16 @@ export class LoginPage implements OnInit {
 
   // login and go to home page
   login(user: User) {
-
-    
-    this.auth.login(user).subscribe( retorno => {
-       //this.loading.present();
-       console.log("logueando");
-       this.callfunc(retorno);
+    this.auth.login(user).then( retorno => {
+        this.loading.present();
+        this.goBack();
     });
   }
 
-  callfunc(retorno){
-    console.log("terminó");
-    localStorage.setItem('usuario', retorno.user[0].username);
-    this.nav.setRoot('page-programacion', {userProfile: retorno.user[0].username} );
-    //this.loading.dismiss();
+  goBack(){
+    this.nav.setRoot('page-programacion', {userProfile: ""} );
+    this.loading.dismiss();
+    document.getElementById('nombres').innerHTML = localStorage.getItem('usuario');
   }
 
   forgotPass() {

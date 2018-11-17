@@ -49,8 +49,6 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     SocialSharing,
   ]
 
-  
-  
 })
 
 export class AppModule {}
