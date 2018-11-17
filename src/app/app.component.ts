@@ -48,7 +48,7 @@ export class MyApp {
 
       {title: 'Museos bogotá', component: 'page-museos', icon: 'camera'},
 
-      //{title: 'Tips Bici', component: 'page-tips', icon: 'bicycle'},
+      {title: 'Tips Bici', component: 'page-tips', icon: 'bicycle'},
 
     ];
 
