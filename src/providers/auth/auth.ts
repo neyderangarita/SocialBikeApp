@@ -2,7 +2,8 @@ import { Api2Provider } from './../api2/api2';
 import { User } from './../../shared/models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { tap, catchError, map } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,15 +18,20 @@ export class AuthProvider {
   constructor(public http: HttpClient, public api: Api2Provider) {
   }
 
-  login(user: User){
+  login(user: User) {
+    
+    return new Promise((resolve) =>{
+      this.http.post<any>(api + "auth/login", user, httpOptions).subscribe((retorno: any) => {
+          this.token = retorno.auth_token;
+          this.userId = retorno.user[0].id;
+          localStorage.setItem('token', this.token);
+          localStorage.setItem('userId', this.userId);
+          resolve();
+      });
+    });
 
-    return this.http.post<any>(api + "auth/login", user, httpOptions).pipe(
-      tap((retorno: any) => {
-        console.log("Este es el token logueo:" + retorno.auth_token); 
-        this.token = retorno.auth_token;
-        this.userId = retorno.user[0].id;
-        localStorage.setItem('token', this.token);
-        localStorage.setItem('userId', this.userId);
-      }));
+
+
   }
+
 }
