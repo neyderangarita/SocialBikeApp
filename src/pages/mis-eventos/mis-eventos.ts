@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {Subject} from "rxjs/Subject";
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @IonicPage({
   name: 'page-mis-eventos',
@@ -31,6 +32,7 @@ export class MisEventosPage {
     public menu: MenuController,
     public auth: AuthProvider,
     public api: Api2Provider,
+    private socialSharing: SocialSharing
     ) {
       this.menu.swipeEnable(true);
       this.menu.enable(true);
@@ -83,4 +85,12 @@ export class MisEventosPage {
     });
   }
 
+  shareElement(element){
+    this.socialSharing.shareViaTwitter( "Te invitamos a: " + element.nombre + "en el sitio de encuentro: " + element.sitio_encuentro + " el día: " + element.fecha, null, null)
+              .then(() => {
+                console.log("todo ok");
+              })
+              .catch((error) => {
+    });
+  }
 }
