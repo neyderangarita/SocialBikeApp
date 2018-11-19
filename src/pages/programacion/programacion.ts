@@ -81,12 +81,11 @@ export class ProgramacionPage implements OnDestroy {
   }
 
   shareElement(element){
-    this.socialSharing.shareViaTwitter(element.nombre, null, null)
+    this.socialSharing.shareViaTwitter( "Te invitamos a: " + element.nombre + "en el sitio de encuentro: " + element.sitio_encuentro + " el día: " + element.fecha, null, null)
               .then(() => {
                 console.log("todo ok");
               })
               .catch((error) => {
     });
   }
-
 }
