@@ -6,11 +6,11 @@
     <ion-title>{{titulo}}</ion-title>
   </ion-navbar>
 </ion-header>
+
+
 <ion-content class="auth-page vertical-align-content">
   <div class="login-content">    
-    <!-- Register form -->
     <form [formGroup]="onRegisterForm" class="list-form">
-
       <ion-item>
             <ion-label floating>
               <ion-icon name="text" item-start class="text-white"></ion-icon>
@@ -20,7 +20,6 @@
       </ion-item>
       <p ion-text color="danger" class="text-1x has-error" 
             *ngIf="onRegisterForm.get('name').touched && onRegisterForm.get('name').hasError('required')">Este campo es requerido</p>
-
       <ion-item>
         <ion-label floating>
           <ion-icon name="bicycle" item-start class="text-white"></ion-icon>
@@ -38,7 +37,6 @@
           </ion-label>
           <ion-datetime displayFormat="MM/DD/YYYY HH:mm" min="2018" formControlName="dateEvent" [(ngModel)]="event.fecha"></ion-datetime>
       </ion-item>
-
     </form>
     <div margin-top>
       <button ion-button block color="dark" tappable (click)="register(event)" [disabled]="!onRegisterForm.valid">
@@ -49,4 +47,7 @@
       </button>
     </div>
   </div>
+
+  <div id="map"></div>
+
 </ion-content>

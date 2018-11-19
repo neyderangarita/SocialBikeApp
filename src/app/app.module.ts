@@ -11,6 +11,8 @@ import {MyApp} from "./app.component";
 import { AuthProvider } from '../providers/auth/auth';
 import { Api2Provider } from '../providers/api2/api2';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Encoding } from "@ionic-native/google-maps";
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     AuthProvider,
     Api2Provider,
     SocialSharing,
+    Geolocation,
+    Encoding,
   ]
 
 })
