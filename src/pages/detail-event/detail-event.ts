@@ -1,11 +1,12 @@
-//import { ProgramacionPage } from './../programacion/programacion';
 import { Api2Provider } from './../../providers/api2/api2';
 import { AuthProvider } from './../../providers/auth/auth';
 import {Component} from '@angular/core';
 import {ToolsService} from "../../providers/tools";
 import {IonicPage, MenuController, NavController, NavParams, ToastController, AlertController} from 'ionic-angular';
 import {Subject} from "rxjs/Subject";
-//import {SocialSharing} from "@ionic-native/social-sharing";
+import { Geolocation, Geoposition } from '@ionic-native/geolocation';
+
+declare var google;
 
 @IonicPage({
   name: 'page-detail-event',
@@ -20,7 +21,9 @@ import {Subject} from "rxjs/Subject";
 
 export class DetailEventPage {
 
+  map: any;
   comments: any;
+  routes: any;
   path: string;
   url_banner: string;
   nombre_evento: string;
@@ -42,6 +45,7 @@ export class DetailEventPage {
     public auth: AuthProvider,
     public api: Api2Provider,
     public toastCtrl: ToastController,
+    private geolocation: Geolocation,
   ) {
     this.menu.swipeEnable(true);
     this.menu.enable(true);
@@ -51,15 +55,27 @@ export class DetailEventPage {
     this.sitio_encuentro = this.navParams.get("sitio_encuentro");
     this.fecha = this.navParams.get("fecha");
     this.idEvento = this.navParams.get("idEvento");
+    console.log(this.idEvento);
+
+
   }
 
   ionViewDidLoad() {
+    this.getRoute();
     this.getComments();
   }
 
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+  }
+
+  getRoute(){
+    this.api.callPetition('routes/?event_id=' + this.idEvento, 'GET')
+    .then(data => {
+      this.routes = data;
+      this.getPosition();
+    });
   }
 
   getComments(){
@@ -117,6 +133,58 @@ export class DetailEventPage {
       ]
     });  
     forgot.present();
+  }
+
+  getPosition():any{
+    this.geolocation.getCurrentPosition()
+    .then(response => {
+      this.loadMap(response);
+    })
+    .catch(error =>{
+      console.log(error);
+    })
+  }
+
+  loadMap(position: Geoposition){ 
+    // create a new map by passing HTMLElement
+    let mapEle: HTMLElement = document.getElementById('map');
+
+    // create LatLng object
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+
+    let myLatLng = {lat: latitude, lng: longitude};
+
+    // create map
+    this.map = new google.maps.Map(mapEle, {
+      center: myLatLng,
+      zoom: 12
+    });
+    
+
+    console.log(this.routes.map);
+
+    var encodedPath= this.routes.map;
+    
+    var decodedPath = google.maps.geometry.encoding.decodePath(encodedPath);
+
+    google.maps.event.addListenerOnce(this.map, 'idle', () => {
+      let marker = new google.maps.Marker({
+        position: myLatLng,
+        map: this.map,
+        title: 'Hello World!'
+      });
+      mapEle.classList.add('show-map');
+    });
+
+    var flightPath = new google.maps.Polyline({
+      path: decodedPath,
+      geodesic: true,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+    flightPath.setMap(this.map);
   }
 
 }

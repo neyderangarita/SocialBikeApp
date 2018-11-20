@@ -8,11 +8,17 @@
   </ion-header>
   
   <ion-content class="common-bg">
+
+    <div id="map"></div>
+
     <ion-card>
         <ion-item>
+
           <ion-avatar item-start>
             <img src="assets/img/logo.png">
           </ion-avatar>
+
+
           <h2>{{nombre}}</h2>
           <p>Sitio encuentro: {{sitio_encuentro}}</p>
           <p>{{fecha}}</p>
@@ -36,15 +42,9 @@
         </div>
       </ion-card>
 
-
-      <!-- <ion-footer padding>
-          <ion-textarea [(ngModel)]="message" type="text" placeholder="Comentarios .... "></ion-textarea>
-          <button ion-button small float-right round (click)="sendComment()">Send</button>
-      </ion-footer> -->
-
       <ion-fab right top>
           <button ion-fab color="primary" (click)="sendComment()"><ion-icon name="text"></ion-icon></button>
-      </ion-fab>
+    </ion-fab>
 
   </ion-content>
   
