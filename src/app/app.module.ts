@@ -13,6 +13,7 @@ import { Api2Provider } from '../providers/api2/api2';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Encoding } from "@ionic-native/google-maps";
+import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { Encoding } from "@ionic-native/google-maps";
     SocialSharing,
     Geolocation,
     Encoding,
+    InAppBrowser,
   ]
 
 })
