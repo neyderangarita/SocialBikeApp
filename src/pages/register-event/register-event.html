@@ -37,6 +37,19 @@
           </ion-label>
           <ion-datetime displayFormat="MM/DD/YYYY HH:mm" min="2018" formControlName="dateEvent" [(ngModel)]="event.fecha"></ion-datetime>
       </ion-item>
+
+      <ion-item>
+        <ion-label floating> 
+          <ion-icon name="bicycle" item-start class="text-white"></ion-icon>
+            Ruta
+        </ion-label>
+        <ion-select>
+          <ion-option *ngFor="let ruta of actividades" [value]="ruta.id" (ionSelect)="onChangeRuta($event, ruta.id)" >
+            {{ruta.name}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+
     </form>
     <div margin-top>
       <button ion-button block color="dark" tappable (click)="register(event)" [disabled]="!onRegisterForm.valid">
@@ -47,7 +60,6 @@
       </button>
     </div>
   </div>
-
   <div id="map"></div>
-
+  
 </ion-content>
