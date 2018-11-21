@@ -77,9 +77,8 @@ export class RegisterEventPage {
     };
 
     this.http.post('https://www.strava.com/oauth/token', parameter).subscribe(data => {
-
-      this.stravaDatos = data.access_token;
-      localStorage.setItem('token_strava', this.stravaDatos);
+      this.stravaDatos = data;
+      localStorage.setItem('token_strava', this.stravaDatos.access_token);
     });
 
     this.httpOptions = {
@@ -100,10 +99,10 @@ export class RegisterEventPage {
     this.http.get('https://www.strava.com/api/v3/activities/' + idRuta, this.httpOptions).subscribe(data => {
 
       this.actividad = data;
-      this.start_latitude = data.start_latitude;
-      this.start_longitude = data.start_longitude;
-      this.polyline = data.map.polyline;
-      this.name = data.name;
+      this.start_latitude = this.actividad.start_latitude;
+      this.start_longitude = this.actividad.start_longitude;
+      this.polyline = this.actividad.map.polyline;
+      this.name = this.actividad.name;
       this.getPosition();
     });
   }
@@ -172,8 +171,12 @@ export class RegisterEventPage {
 
     this.api.callPetition('events/', 'POST', parameter)
     .then(data => {
+
+      /*
+      let evento = data;
+
       let parameterRoute = {
-        event_id: data.id,
+        event_id: evento.id,
         map: this.polyline,
         description: this.name
       }
@@ -183,6 +186,9 @@ export class RegisterEventPage {
         this.nav.setRoot('page-programacion');
         this.tools.notify("Se ha registrado el evento: " + parameter.nombre + " correctamente.");
       });
+
+      */
+     
     });
   }
 }
