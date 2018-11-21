@@ -35,6 +35,7 @@ export class RegisterEventPage {
   polyline: any;
   name: any;
   httpOptions;
+  evento: any;
 
   constructor(
     private _fb: FormBuilder,
@@ -171,24 +172,24 @@ export class RegisterEventPage {
 
     this.api.callPetition('events/', 'POST', parameter)
     .then(data => {
-
-      /*
-      let evento = data;
-
-      let parameterRoute = {
-        event_id: evento.id,
-        map: this.polyline,
-        description: this.name
-      }
-
-      this.api.callPetition('routes/', 'POST', parameterRoute)
-      .then(data => {
-        this.nav.setRoot('page-programacion');
-        this.tools.notify("Se ha registrado el evento: " + parameter.nombre + " correctamente.");
-      });
-
-      */
-     
+      this.evento = data;
+      this.registrarRuta(this.evento);
     });
   }
+
+  registrarRuta(evento) {
+    
+    let parameterRoute = {
+      event_id: evento.id,
+      map: this.polyline,
+      description: this.name
+    }
+
+    this.api.callPetition('routes/', 'POST', parameterRoute)
+    .then(data => {
+      this.nav.setRoot('page-programacion');
+      this.tools.notify("Se ha registrado el evento correctamente.");
+    });
+  }
+
 }
