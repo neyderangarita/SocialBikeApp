@@ -17,11 +17,9 @@
           <ion-avatar item-start>
             <img src="assets/img/logo.png">
           </ion-avatar>
-
-
           <h2>{{nombre}}</h2>
           <p>Sitio encuentro: {{sitio_encuentro}}</p>
-          <p>{{fecha}}</p>
+          <p>Fecha y hora: {{ fecha | date : 'dd-MM-yyyy h:mm a' }}</p>
         </ion-item>
         <img src="{{url_banner}}">
         <ion-row>

@@ -31,8 +31,8 @@
                       <img src="assets/img/logo.png">
                   </ion-thumbnail>
                   <h2>{{elemento.nombre}}</h2>
-                  <p>Sitio encuentro: {{elemento.sitio_encuentro}}</p>
-                  <p>Fecha: {{elemento.fecha}}</p>
+                  <p>Sitio encuentro: {{elemento.sitio_encuentro}}</p>              
+                  <p>Fecha y hora: {{ elemento.fecha | date : 'dd-MM-yyyy h:mm a' }} </p>
               </button>
 
               <ion-item-options side="right">
