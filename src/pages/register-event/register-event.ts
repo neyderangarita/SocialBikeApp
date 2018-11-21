@@ -36,6 +36,7 @@ export class RegisterEventPage {
   name: any;
   httpOptions;
   evento: any;
+  token;
 
   constructor(
     private _fb: FormBuilder,
@@ -51,7 +52,29 @@ export class RegisterEventPage {
     ) {
       this.menu.swipeEnable(true);
       this.menu.enable(true);
-      this.titulo = 'Registrar evento'
+      this.titulo = 'Registrar evento';
+
+      let parameter = {
+        client_id: "28768",
+        client_secret: "23597900cf3bcb0657ccc21683779e72798d6466",
+        code: "b2e4e2821276c579debca304477b22738f97bf24",
+        grant_type: ""
+      };
+      this.http.post('https://www.strava.com/oauth/token', parameter).subscribe(data => {
+        this.setHttpOption(data);
+      });
+  }
+
+  setHttpOption(token){
+    this.httpOptions = {
+      headers: new HttpHeaders(
+        { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token.access_token}`                 
+        })
+    };
+    localStorage.setItem('token_strava', token.access_token);
+    this.cargarActividades(token.access_token);
   }
 
   ngOnInit() {
@@ -68,37 +91,33 @@ export class RegisterEventPage {
     });
   }
 
-  ionViewDidLoad() {
-    
-    let parameter = {
-      client_id: "28768",
-      client_secret: "23597900cf3bcb0657ccc21683779e72798d6466",
-      code: "b2e4e2821276c579debca304477b22738f97bf24",
-      grant_type: ""
-    };
-
-    this.http.post('https://www.strava.com/oauth/token', parameter).subscribe(data => {
-      this.stravaDatos = data;
-      localStorage.setItem('token_strava', this.stravaDatos.access_token);
-    });
-
+  cargarActividades(token_strava){
+    this.token = token_strava;
     this.httpOptions = {
       headers: new HttpHeaders(
         { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token_strava')}`                 
+          'Authorization': `Bearer ${this.token}`                 
         })
     };
-
     this.http.get('https://www.strava.com/api/v3/athlete/activities', this.httpOptions).subscribe(data => {
       this.actividades = data;
     });
+  }
 
+  ionViewDidLoad() {
   }
 
   onChangeRuta(event: Event, idRuta: string){
+    this.token = localStorage.getItem('token_strava');
+    this.httpOptions = {
+      headers: new HttpHeaders(
+        { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.token}`                 
+        })
+    };
     this.http.get('https://www.strava.com/api/v3/activities/' + idRuta, this.httpOptions).subscribe(data => {
-
       this.actividad = data;
       this.start_latitude = this.actividad.start_latitude;
       this.start_longitude = this.actividad.start_longitude;
@@ -190,6 +209,10 @@ export class RegisterEventPage {
       this.nav.setRoot('page-programacion');
       this.tools.notify("Se ha registrado el evento correctamente.");
     });
+  }
+
+  programacion(){
+    this.nav.setRoot('page-programacion');
   }
 
 }
