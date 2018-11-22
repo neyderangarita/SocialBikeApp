@@ -109,6 +109,7 @@ export class RegisterEventPage {
   }
 
   onChangeRuta(event: Event, idRuta: string){
+
     this.token = localStorage.getItem('token_strava');
     this.httpOptions = {
       headers: new HttpHeaders(
@@ -117,6 +118,7 @@ export class RegisterEventPage {
           'Authorization': `Bearer ${this.token}`                 
         })
     };
+
     this.http.get('https://www.strava.com/api/v3/activities/' + idRuta, this.httpOptions).subscribe(data => {
       this.actividad = data;
       this.start_latitude = this.actividad.start_latitude;
@@ -128,14 +130,14 @@ export class RegisterEventPage {
   }
 
   getPosition():any{
-
     this.geolocation.getCurrentPosition()
     .then(response => {
       this.loadMap(response);
     })
     .catch(error =>{
       console.log(error);
-    })
+    });
+
   }
 
   loadMap(position: Geoposition){ 
