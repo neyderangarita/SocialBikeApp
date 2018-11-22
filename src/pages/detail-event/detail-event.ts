@@ -55,13 +55,11 @@ export class DetailEventPage {
     this.sitio_encuentro = this.navParams.get("sitio_encuentro");
     this.fecha = this.navParams.get("fecha");
     this.idEvento = this.navParams.get("idEvento");
-    console.log(this.idEvento);
-
-
+    this.getRoute();
   }
 
   ionViewDidLoad() {
-    this.getRoute();
+
     this.getComments();
   }
 
@@ -86,7 +84,6 @@ export class DetailEventPage {
   }
 
   sendComment(){
-
     let forgot = this.alertCtrl.create({
       title: 'Registrar comentario',
       message: " ",
@@ -161,11 +158,7 @@ export class DetailEventPage {
       zoom: 12
     });
     
-
-    console.log(this.routes.map);
-
     var encodedPath= this.routes.map;
-    
     var decodedPath = google.maps.geometry.encoding.decodePath(encodedPath);
 
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
