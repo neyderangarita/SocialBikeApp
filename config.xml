@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.ionic.socialbike0001" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>SocialBike</name>
     <description>App para conectar bici usuarios mediante eventos y temas de interes</description>
     <author email="neyder6101@gmail.com" href="https://twitter.com/neyder_angarita">Neyder Angarita Osorio</author>
